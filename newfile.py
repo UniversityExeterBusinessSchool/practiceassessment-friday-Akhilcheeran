@@ -1,9 +1,7 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/pfNOK2_w)
-# PracticeAssessment-Friday-
 #######################################################################################################################################################
 # 
-# Name:akhil cheeran santhosh
-# SID:740089494
+# Name:
+# SID:
 # Exam Date:
 # Module:
 # Github link for this assignment:  
@@ -48,6 +46,19 @@ keywords = {
 
 # Write your code to process the text and count keyword occurrences
 mylist=[]
+keycode=[7,4]
+#key code is 
+for keycode in keywords :
+    word=keywords[keycode]
+    startpos = customer_reviews.find(word)
+    if startpos != -1 :
+        endpos= startpos + len(word)
+        keywordcounts=[startpos,endpos]
+#result
+print (keywordcounts)
+#[188,197]
+        
+    
 ##########################################################################################################################################################
 
 # Question 2 - Business Metrics
@@ -55,19 +66,37 @@ mylist=[]
 # Gross Profit Margin, Inventory Turnover, Customer Retention Rate (CRR), and Break-even Analysis. Implement Python functions 
 # that take relevant values as inputs and return the computed metric. Use the first two and last two digits of your ID number as input values.
 
-# Insert first two digits of ID number here:
-# Insert last two digits of ID number here:
+# Insert first two digits of ID number here:74
+# Insert last two digits of ID number here:94
 
 # Write your function for Gross Profit Margin
+def gross_profit_margin(grossprofit, revenue):
+    return (grossprofit / revenue) * 100 if revenue != 0 else 0
+def grossprofitmargin(grossprofit , revenue ) :
+       return (grossprofit / revenue) * 100 if revenue != 0 else 0
+
+
 
 # Write your function for Inventory Turnover
-
+def inventoryturnover( cogs, avginv) :
+    return (cogs/ avginv) if avginv else 0
 # Write your function for Customer Retention Rate (CRR)
-
+def crr( customerretained , customerstart ):
+    return(customerretained /customerstart)*100 if customerstart else 0
 # Write your function for Break-even Analysis
-
+def bea( fixedcosts , cmpu ):
+    return(fixedcosts/cmpu)
 # Call your functions here
-
+print ('gross profit margin ', grossprofitmargin(74 ,94) )
+print ('crr is ' ,crr(74 ,94))
+print('bea is ' , bea(74, 94))
+print('itr is ' ,inventoryturnover(74 ,94))
+'''
+outputgross profit margin  78.72340425531915
+crr is  78.72340425531915
+bea is  0.7872340425531915
+itr is  0.7872340425531915
+'''
 ##########################################################################################################################################################
 
 # Question 3 - Forecasting and Regression
@@ -76,7 +105,7 @@ mylist=[]
 # 1. The optimal delivery cost that maximizes profit
 # 2. The expected shipment volume when the cost is set at £68
 
-"""
+'''
 Delivery Cost (£)    Shipment Volume (Units)
 -------------------------------------------
 25                  500
@@ -89,10 +118,26 @@ Delivery Cost (£)    Shipment Volume (Units)
 60                  310
 65                  290
 70                  250
-"""
-
+'''
 # Write your regression model code here
 
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+# Correcting the input shape
+deliverycost = np.array([25, 30, 35, 40, 45, 50, 55, 60, 65, 70]).reshape(-1, 1)
+shippingvolume = np.array([500, 480, 450, 420, 400, 370, 340, 310, 290, 250])
+
+# Training the model
+model = LinearRegression()
+model.fit(deliverycost, shippingvolume)
+
+# Predicting for a new value
+prediction = model.predict(np.array([[68]]))  # Needs to be a 2D array
+
+print("Predicted shipping volume for delivery cost 68:", prediction[0])
+
+#outputPrecPredicted shipping volume for delivery cost 68: 267.939393939394
 ##########################################################################################################################################################
 
 # Question 4 - Debugging and Data Visualization
@@ -103,13 +148,13 @@ import matplotlib.pyplt as plt
 # Generate 100 random numbers between 1 and student ID number
 your_ID=input("Enter your Student ID: ")
 max_value = int(your_ID)
-random_numbers = [random.randint(your_ID, max_valu) in range(100)]
+random_numbers = [random.randint( 1 ,max_value) in range(100)]
 
 # Plotting the numbers in a histogram
-plt.histogram(random_number, bin=10, edgecolour='blue', alpha=0.7, colour='red')
+plt.histogram(random_numbers, bin=10, edgecolour='blue', alpha=0.7, colour='red')
 plt.title="Histogram of 100 Random Numbers"
 plt.xlabel="Value Range"
 plt.ylabel="Frequency"
 plt.grid("True")
-plt.show("plot")
+plt.show()
 
